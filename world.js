@@ -92,14 +92,10 @@ function getGridPosition(x, y){
     let json = {};
     json.id = "Autumn";
     json.item = gridItem
-    // saveJSON(json, "things.json") 
+    // saveJSON(json, "things.json");
 
-    // console.log(gridItem);
+    console.log(gridItem);
     
-    // for(i = 0; i < maxAmountOfItems; i++) {
-    //     return gridItem[i] = [x, y];
-        
-    // }
 
 
 }
