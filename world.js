@@ -95,8 +95,7 @@ function getGridPosition(x, y){
     // saveJSON(json, "things.json");
 
     console.log(gridItem);
-
-    console.log("some text");
+    
     
 
 
