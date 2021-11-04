@@ -94,7 +94,7 @@ function getGridPosition(x, y){
     json.item = gridItem
     // saveJSON(json, "things.json") 
 
-    console.log(gridItem);
+    // console.log(gridItem);
     
     // for(i = 0; i < maxAmountOfItems; i++) {
     //     return gridItem[i] = [x, y];
