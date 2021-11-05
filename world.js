@@ -3,12 +3,13 @@
 let gridSize = 50;
 let gridOffset = gridSize / 2;
 // let worldSpritePositions[] = 
+let editorIsOpen = 0;
 
 
 function drawWorld(){
 
     ground = createSprite(width / 2, height - 50, width, 100);
-    ground.shapeColor = color(50,150,50);
+    ground.shapeColor = color(120,200,50);
 
     worldSprite = new worldPlatform();
     
@@ -24,10 +25,12 @@ class worldPlatform {
     setup(x, y, w, h) {
         this.worldSprite = createSprite(x, y, w, h);
         this.worldSprite.addImage(tex_grass);
-        // 
     }
 
     draw(){
+
+        // worldItems.drawMenu();
+        // worldItems.drawItems();
 
         if (mouseIsPressed) {
           let x = snap(mouseX);
@@ -50,9 +53,9 @@ class worldPlatform {
                 console.log([x, y])
 
             }
-                
-    
+
         }
+
     }
 
 
@@ -72,9 +75,8 @@ function snap(op) {
 
 let gridItem = []; // 2D Array (Matrix) of items placed on gridTiles
 let maxAmountOfItems = 100;
+
 let iteration = 0;
-
-
 function addGridPosition(x, y) { // Gets mouse snap position and adds xy to 2D Array
 
     gridItem[iteration++] = [x, y];
@@ -82,30 +84,18 @@ function addGridPosition(x, y) { // Gets mouse snap position and adds xy to 2D A
 }
 
 function getGridPosition(x, y){
-
-    
     // gridItem[ [x], [y] ]
     // e.g. gridItem[[32, 44], [56, 123]]
 
     // let gridItem = [];
 
     let json = {};
-    json.id = "Autumn";
-    json.item = gridItem
+    json.itemType = "Autumn";
+    json.location = gridItem
     // saveJSON(json, "things.json");
 
     console.log(gridItem);
-    
-    
 
-
-}
-function keyPressed() {
-    if(key == 'w') {
-        loadJSON("things.json")
-        console.log("loadMap Key Pressed");
-        
-    }
 }
 
 function loadMap() {
@@ -113,4 +103,3 @@ function loadMap() {
 
     
 }
-

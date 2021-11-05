@@ -7,15 +7,16 @@ class Player {
 
     setup(x, y, w, h, color){
         this.sprite = createSprite(x, y, w, h);
+        this.sprite.addImage(tex_player);
         this.sprite.shapeColor = color;
-        this.sprite.debug = true;
+        this.sprite.debug = false;
         this.sprite.friction = 0.1;
     }
 
     movement(){
         if(jump == false){
             if(keyIsDown(UP_ARROW)){
-                player.sprite.addSpeed(30, -90);
+                player.sprite.addSpeed(40, -90);
                 jump = true;
             }
         }
