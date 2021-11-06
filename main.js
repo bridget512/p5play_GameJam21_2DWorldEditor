@@ -1,5 +1,11 @@
-const RES = {x: 600, y: 600}
+const RES = {x: 600, y: 500}
 let jump;
+
+
+let grassTexture = {
+    image: "img/grass.png"
+}
+
 
 function preload(){
     tex_grass = loadImage("img/grass.png")
@@ -18,10 +24,11 @@ function setup(){
 
     worldTiles = new Group();
     
+    items = new MenuItems();
+
+
 
     drawWorld();
-
-
     
 } // setup()
 
@@ -35,8 +42,12 @@ function draw(){
     player.sprite.addSpeed(0.9, 90); // Gravity
     player.movement();
 
-    let  menuItems = new menuItemObject(20, 20, 50, 30);
-	menuItems.display();
+
+
+    // items.show();
+
+    // let  menuItems = new menuItemObject(20, 20, 50, 30);
+	// menuItems.show();
 
     drawSprites();
 

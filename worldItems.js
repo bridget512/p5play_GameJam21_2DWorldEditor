@@ -1,6 +1,71 @@
 
 
-let worldItems = [];
+
+
+
+class MenuItems {
+	constructor() {
+		this.x = 100;
+		this.y = 100;
+		this.size = 50;
+	}
+
+	show() {
+		rect(x, y, size, size);
+	}
+
+
+
+}
+
+
+// class menuItem {
+// 	constructor(x, y, size, color){
+// 		this.x = x;
+// 		this.y = y;
+// 		this.size = size;
+// 		this.color = "yellow"; // replace  with selectedTileSprite
+// 		this.show();
+// 	}
+
+// 	show(){
+// 		fill(this.color);
+// 		rect(this.x, this.y, this.size, this.size);
+// 	}
+// }
+
+// // subclass for menuItems
+// // 
+// class menuItemObject {
+// 	constructor(x, y, shape, tileSize){
+// 		this.x = x;
+// 		this.y = y;
+// 		this.shape = shape;
+// 		this.tileSize = tileSize;
+// 	}
+
+// 	show() {
+// 		let itemSpacing = 41;
+
+//         for (let i = 0; i < worldItems.length; i++) {
+
+// 			new menuItem(this.x + i * itemSpacing , this.y , this.tileSize);
+
+
+
+
+//             // new menuItem(this.x + i * itemSpacing , this.y , this.tileSize);
+//         }
+// 	}
+
+
+// } // class menuItemObject
+
+
+
+
+
+
 
 // class itemMenu {
 //     constructor(s) {
@@ -27,39 +92,3 @@ let worldItems = [];
 // }
 
 // main class for menuItems
-
-class menuItem {
-	constructor(x, y, size, color){
-		this.x = x;
-		this.y = y;
-		this.size = size;
-		this.color = "yellow"; // replace  with selectedTileSprite
-		this.display();
-	}
-
-	display(){
-		fill(this.color);
-		rect(this.x, this.y, this.size, this.size);
-	}
-}
-
-// subclass for menuItems
-// 
-class menuItemObject {
-	constructor(x, y, shape, tileSize){
-		this.x = x;
-		this.y = y;
-		this.shape = shape;
-		this.tileSize = tileSize;
-	}
-
-	display() {
-		let itemSpacing = 41;
-
-        for (let i = 0; i < 14; i++) {
-            new menuItem(this.x + i * itemSpacing , this.y , this.tileSize);
-        }
-	}
-
-
-} // class menuItemObject

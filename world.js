@@ -9,7 +9,7 @@ let editorIsOpen = 0;
 function drawWorld(){
 
     ground = createSprite(width / 2, height - 50, width, 100);
-    ground.shapeColor = color(120,200,50);
+    ground.shapeColor = color(166,124,82);
 
     worldSprite = new worldPlatform();
     
@@ -29,29 +29,18 @@ class worldPlatform {
 
     draw(){
 
-        // worldItems.drawMenu();
-        // worldItems.drawItems();
-
         if (mouseIsPressed) {
           let x = snap(mouseX);
           let y = snap(mouseY);
     
-
             if (mouseButton === LEFT) {
                 this.setup(x, y, 50, 50);
                 worldTiles.add(this.worldSprite);
-
-                addGridPosition(x, y);
-                // console.log(x, y);
-                
+                editorAddWorldObject(x, y);               
             }
 
             if (mouseButton === RIGHT) {
-                console.log(gridItem);
-
-                getGridPosition(x, y);
-                console.log([x, y])
-
+                editorSaveJSON(x, y);
             }
 
         }
@@ -72,34 +61,52 @@ function snap(op) {
 } // snap()
 
 
-
 let gridItem = []; // 2D Array (Matrix) of items placed on gridTiles
-let maxAmountOfItems = 100;
-
+let gridItemClean = [];
 let iteration = 0;
-function addGridPosition(x, y) { // Gets mouse snap position and adds xy to 2D Array
 
-    gridItem[iteration++] = [x, y];
+// Gets mouse snap position and adds xy to 2D Array while not allowing duplicates
+    // 2D array selection example
+    // gridItem[4][0]  // forth array, firstData
+    // gridItem[0][1]  // first array, secondData
+function editorAddWorldObject(x, y) { 
 
-}
+    gridItem[iteration++] = [x, y];  
 
-function getGridPosition(x, y){
+
+    // do a check to see if there's already an object in this x,y position
+        // get current gridItem[iteration]
+        // check the x,y against the current gridItem[iteration]
+        // if an entry for x,y exists in the array, take the current value and put it in a clean array 
+
+    for(let i = 0; i < gridItem.length; i++) {
+
+        for(let j = 0; j < gridItem[i].length; j++) {
+
+
+            if(x == gridItem[i][0] && y == gridItem[i][1]){
+                console.log("Duplicate");
+            }
+            else {
+                gridItemClean[i] = [x, y]
+            }
+
+            
+        }
+    }
+
+
+} // addGridPosition
+
+
+function editorSaveJSON(){
     // gridItem[ [x], [y] ]
     // e.g. gridItem[[32, 44], [56, 123]]
-
-    // let gridItem = [];
 
     let json = {};
     json.itemType = "Autumn";
     json.location = gridItem
     // saveJSON(json, "things.json");
 
-    console.log(gridItem);
-
-}
-
-function loadMap() {
-
-
-    
+    console.log(gridItemClean);
 }
