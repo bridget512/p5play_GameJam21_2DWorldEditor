@@ -61,7 +61,7 @@ function snap(op) {
 } // snap()
 
 
-let gridItem = []; // 2D Array (Matrix) of items placed on gridTiles
+let gridItem = [];
 let iteration = 0;
 
 // Gets mouse snap position and adds xy to 2D Array while not allowing duplicates
@@ -71,32 +71,47 @@ let iteration = 0;
 function editorAddWorldObject(x, y) { // Will eventually also take other params e.g. "itemType"
 
     // gridItem[iteration++] = {x, y};  
+
+    // console.log(gridItem)
+    // // allowAppend = false;
+    // gridItem.forEach((item) => {
+    //     console.log("HELP")
+    //     console.log(x)
+    //     console.log(y)
+    //     console.log(item)
+        
+    //     if(x != item.x && y != item.y){
+    //         // allowAppend = true
+    //         // gridItem[itteration++] = {x, y}; 
+    //         console.log("boop");
+            
+    //     }
+    // });
+
+    // if the array is empty, add a first item so the for loop works
+    if(gridItem.length == 0) {
+        console.log("First GridItem");
+        gridItem[0] = [x, y]; 
+        // iteration += 1;
+    }
+
+    else {
+        for(let i = 0; i < gridItem.length; i++) { // go through each row of array
+            for(let j = 0; j < gridItem[i].length; j++) { // go through the number of columns in that row
+
+                // console.log(gridItem[i].length)
+                // console.log(gridItem[j].length)
+                
+                if(gridItem[i][0] != x && gridItem[i][1] != x){
+                    
+                    console.log("New GridItem");
+                    gridItem[iteration] = [x, y];
     
-
-    for(let i = 0; i < gridItem.length; i++) {
-        check = false;
-
-        for(let j = 0; j < gridItem[i].length; j++) {
-
-
-            if(gridItem[i] == x && gridItem[i] == y){
-                console.log("Duplicate");
-                check = true
+                }
             }
-            
-            else {
-                check = false
-            }
-  
-        }
-
-        if(check == false){
-            gridItem[iteration++] = {x, y}; 
-            
-            check = false
-
         }
     }
+
 
 
 } // addGridPosition
@@ -112,4 +127,12 @@ function editorSaveJSON(){
     // saveJSON(json, "things.json");
 
     console.log(gridItem);
+}
+
+
+function LoadMapJSON() {
+    // load all into an array
+    // get the itemType and the x,y positions
+    //get the itemType and its amount of 
+    // 
 }
