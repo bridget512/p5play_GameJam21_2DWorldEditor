@@ -5,7 +5,7 @@ let gridOffset = gridSize / 2;
 
 function drawWorld(){
 
-    ground = createSprite(width / 2, height - 50, width, 100);
+    ground = createSprite(width / 2, height - 25, width, 50);
     ground.shapeColor = color(166,124,82);
 
     worldSprite = new worldPlatform();
@@ -29,8 +29,7 @@ class worldPlatform {
         let y = snap(mouseY);
 
         if (mouseIsPressed) {
-
-    
+                
             if (mouseButton === LEFT) {
                 this.setup(x, y, 50, 50);
                 worldTiles.add(this.worldSprite); // Add to Group()
@@ -70,15 +69,15 @@ function snap(op) {
 let gridItem = [];
 let iteration = 0;
 
-// Gets mouse snap position and adds xy to 2D Array while not allowing duplicates
-    // 2D array selection example
-    // gridItem[4][0]  // forth array, firstData
-    // gridItem[0][1]  // first array, secondData
-function editorAddWorldObject(x, y) { // Will eventually also take other params e.g. "itemType"
+
+// 2D array selection example
+// gridItem[4][0]  // forth array, firstData
+// gridItem[0][1]  // first array, secondData
+function editorAddWorldObject(x, y) {
 
 
 
-    gridItem[iteration++] = [x, y];  
+    gridItem[iteration++] = [x, y];  // currently just spams locations into the array
 
     // console.log(gridItem)
     // // allowAppend = false;
@@ -110,8 +109,7 @@ function editorSaveJSON(){
     json.itemType = "spring_grass";
     json.location = gridItem
     saveJSON(json, "things.json");
-
-    console.log(gridItem);
+    
 }
 
 
@@ -124,13 +122,12 @@ function LoadMapJSON() {
 
 
         worldSprite = createSprite(xpos, ypos, 50, 50);
+
         if(type == "spring_grass") {
             worldSprite.addImage(tex_grass);
             worldTiles.add(worldSprite); // Add to Group()
         }
-        
 
     }
-
     console.log("Map Loaded");
 }

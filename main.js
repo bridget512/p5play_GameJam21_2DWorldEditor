@@ -2,12 +2,15 @@ const RES = {x: 600, y: 500}
 let jump;
 let loadedMap = [];
 
-
+let textures = {
+    player: "img/player.png",
+    spring_flatGrass: "img/grass.png"
+}
 
 function preload(){
     loadedMap = loadJSON("things.json");
-    tex_grass = loadImage("img/grass.png")
-    tex_player = loadImage("img/player.png")
+    tex_grass = loadImage(textures.spring_flatGrass)
+    tex_player = loadImage(textures.player)
 } 
 
 function setup(){
