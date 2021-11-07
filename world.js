@@ -62,36 +62,39 @@ function snap(op) {
 
 
 let gridItem = []; // 2D Array (Matrix) of items placed on gridTiles
-let gridItemClean = [];
 let iteration = 0;
 
 // Gets mouse snap position and adds xy to 2D Array while not allowing duplicates
     // 2D array selection example
     // gridItem[4][0]  // forth array, firstData
     // gridItem[0][1]  // first array, secondData
-function editorAddWorldObject(x, y) { 
+function editorAddWorldObject(x, y) { // Will eventually also take other params e.g. "itemType"
 
-    gridItem[iteration++] = [x, y];  
-
-
-    // do a check to see if there's already an object in this x,y position
-        // get current gridItem[iteration]
-        // check the x,y against the current gridItem[iteration]
-        // if an entry for x,y exists in the array, take the current value and put it in a clean array 
+    // gridItem[iteration++] = {x, y};  
+    
 
     for(let i = 0; i < gridItem.length; i++) {
+        check = false;
 
         for(let j = 0; j < gridItem[i].length; j++) {
 
 
-            if(x == gridItem[i][0] && y == gridItem[i][1]){
+            if(gridItem[i] == x && gridItem[i] == y){
                 console.log("Duplicate");
+                check = true
             }
-            else {
-                gridItemClean[i] = [x, y]
-            }
-
             
+            else {
+                check = false
+            }
+  
+        }
+
+        if(check == false){
+            gridItem[iteration++] = {x, y}; 
+            
+            check = false
+
         }
     }
 
@@ -108,5 +111,5 @@ function editorSaveJSON(){
     json.location = gridItem
     // saveJSON(json, "things.json");
 
-    console.log(gridItemClean);
+    console.log(gridItem);
 }
