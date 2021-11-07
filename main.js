@@ -2,9 +2,6 @@ const RES = {x: 600, y: 500}
 let jump;
 let loadedMap = [];
 
-let grassTexture = {
-    image: "img/grass.png"
-}
 
 
 function preload(){
