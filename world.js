@@ -1,9 +1,6 @@
 
-
 let gridSize = 50;
 let gridOffset = gridSize / 2;
-// let worldSpritePositions[] = 
-let editorIsOpen = 0;
 
 
 function drawWorld(){
@@ -28,21 +25,29 @@ class worldPlatform {
     }
 
     draw(){
-
+        let x = snap(mouseX);
+        let y = snap(mouseY);
         if (mouseIsPressed) {
-          let x = snap(mouseX);
-          let y = snap(mouseY);
+
     
             if (mouseButton === LEFT) {
                 this.setup(x, y, 50, 50);
-                worldTiles.add(this.worldSprite);
-                editorAddWorldObject(x, y);               
+                worldTiles.add(this.worldSprite); // Add to Group()
+                editorAddWorldObject(x, y);           
             }
 
-            if (mouseButton === RIGHT) {
-                editorSaveJSON(x, y);
-            }
+            // if (mouseButton === RIGHT) {
+            //     editorSaveJSON(x, y);
+            // }
 
+        }
+
+        if(keyIsDown(76)) {
+            editorSaveJSON(x, y);
+        }
+
+        if(keyIsDown(77)){
+            LoadMapJSON()
         }
 
     }
@@ -70,7 +75,9 @@ let iteration = 0;
     // gridItem[0][1]  // first array, secondData
 function editorAddWorldObject(x, y) { // Will eventually also take other params e.g. "itemType"
 
-    // gridItem[iteration++] = {x, y};  
+
+
+    gridItem[iteration++] = [x, y];  
 
     // console.log(gridItem)
     // // allowAppend = false;
@@ -122,17 +129,23 @@ function editorSaveJSON(){
     // e.g. gridItem[[32, 44], [56, 123]]
 
     let json = {};
-    json.itemType = "Autumn";
+    json.itemType = "Autumn_grass";
     json.location = gridItem
-    // saveJSON(json, "things.json");
+    saveJSON(json, "things.json");
 
     console.log(gridItem);
 }
 
 
 function LoadMapJSON() {
-    // load all into an array
-    // get the itemType and the x,y positions
-    //get the itemType and its amount of 
-    // 
+    
+    for(let i = 0; i < loadedMap.location.length; i++) {
+        
+        xpos = loadedMap.location[i][0]
+        ypos = loadedMap.location[i][1]
+        worldSprite = createSprite(xpos, ypos, 50, 50);
+        // worldSprite.setup(xpos, ypos, 50, 50);
+    }
+
+    console.log("Map Loaded");
 }

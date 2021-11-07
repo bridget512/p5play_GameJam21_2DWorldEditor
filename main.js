@@ -1,6 +1,6 @@
 const RES = {x: 600, y: 500}
 let jump;
-
+let loadedMap = [];
 
 let grassTexture = {
     image: "img/grass.png"
@@ -8,6 +8,7 @@ let grassTexture = {
 
 
 function preload(){
+    loadedMap = loadJSON("things.json");
     tex_grass = loadImage("img/grass.png")
     tex_player = loadImage("img/player.png")
 } 
